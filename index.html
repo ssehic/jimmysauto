@@ -1,0 +1,1091 @@
+<!DOCTYPE html>
+<html lang="da" data-lang="da">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Jimmy's Auto — Autoværksted i Rødovre</title>
+  <meta name="description" id="meta-desc" content="Lokalt autoværksted i Rødovre med mere end 35 års erfaring. Reparation, dæk og diagnostik. Ring til Jimmy på 28 46 69 59." />
+  <meta name="theme-color" content="#0E1014" />
+
+  <link rel="icon" type="image/png" href="images/favicon-64.png" />
+  <link rel="apple-touch-icon" href="images/logo-mark.png" />
+
+  <!-- Open Graph -->
+  <meta property="og:title" content="Jimmy's Auto — Autoværksted i Rødovre" />
+  <meta property="og:description" content="Mere end 35 års erfaring. Reparation, dæk og diagnostik." />
+  <meta property="og:type" content="website" />
+  <meta property="og:image" content="images/jimmy-shop.jpg" />
+
+  <!-- Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Big+Shoulders+Display:wght@700;900&family=Manrope:wght@400;500;600;700&display=swap" rel="stylesheet" />
+
+  <style>
+    /* ---------- Tokens ---------- */
+    :root {
+      --bg: #F4F1EA;
+      --bg-elev: #FFFFFF;
+      --bg-dark: #0E1014;
+      --bg-dark-elev: #16191F;
+      --fg: #131418;
+      --fg-on-dark: #F4F1EA;
+      --muted: #6B6E76;
+      --muted-on-dark: #A1A4AB;
+      --rule: #E0DCD3;
+      --rule-on-dark: #2A2D34;
+      --accent: #4FA8BD;
+      --accent-hover: #3F92A6;
+      --maxw: 1280px;
+      --gutter: clamp(20px, 5vw, 56px);
+
+      --font-display: "Big Shoulders Display", "Arial Narrow", sans-serif;
+      --font-body: "Manrope", -apple-system, BlinkMacSystemFont, sans-serif;
+    }
+
+    /* ---------- Reset ---------- */
+    *, *::before, *::after { box-sizing: border-box; }
+    html { scroll-behavior: smooth; -webkit-text-size-adjust: 100%; }
+    body {
+      margin: 0;
+      font-family: var(--font-body);
+      font-size: 16px;
+      line-height: 1.55;
+      color: var(--fg);
+      background: var(--bg);
+      -webkit-font-smoothing: antialiased;
+      -moz-osx-font-smoothing: grayscale;
+      padding-bottom: env(safe-area-inset-bottom);
+    }
+    img { max-width: 100%; height: auto; display: block; }
+    a { color: inherit; text-decoration: none; }
+    button { font: inherit; cursor: pointer; border: 0; background: none; color: inherit; }
+
+    /* ---------- Bilingual visibility ---------- */
+    html[data-lang="da"] .t-en { display: none !important; }
+    html[data-lang="en"] .t-da { display: none !important; }
+
+    /* ---------- Type ---------- */
+    .display {
+      font-family: var(--font-display);
+      font-weight: 900;
+      letter-spacing: -0.01em;
+      line-height: 0.92;
+      text-transform: uppercase;
+    }
+    .eyebrow {
+      font-family: var(--font-body);
+      font-size: 12px;
+      font-weight: 600;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      color: var(--muted);
+    }
+    .eyebrow.on-dark { color: var(--accent); }
+    h1.headline { font-size: clamp(56px, 11vw, 148px); }
+    h2.section-title {
+      font-size: clamp(40px, 7vw, 88px);
+      font-family: var(--font-display);
+      font-weight: 900;
+      letter-spacing: -0.01em;
+      line-height: 0.95;
+      text-transform: uppercase;
+      margin: 0;
+    }
+    .accent { color: var(--accent); font-style: italic; font-weight: 700; }
+
+    /* ---------- Layout ---------- */
+    .container {
+      max-width: var(--maxw);
+      margin: 0 auto;
+      padding-left: var(--gutter);
+      padding-right: var(--gutter);
+    }
+    section { padding-block: clamp(64px, 10vw, 128px); }
+
+    /* ---------- Top bar ---------- */
+    .topbar {
+      position: sticky;
+      top: 0;
+      z-index: 50;
+      background: rgba(244, 241, 234, 0.92);
+      backdrop-filter: saturate(140%) blur(10px);
+      -webkit-backdrop-filter: saturate(140%) blur(10px);
+      border-bottom: 1px solid var(--rule);
+    }
+    .topbar-inner {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 12px;
+      height: 76px;
+    }
+    .brand { display: inline-flex; align-items: center; }
+    .brand-logo { height: 52px; width: auto; }
+    .brand-logo-mark { display: none; }
+    .topbar nav { display: none; gap: 28px; font-size: 14px; font-weight: 500; }
+    .topbar nav a { color: var(--muted); transition: color .2s; }
+    .topbar nav a:hover { color: var(--fg); }
+
+    .lang-switch {
+      display: inline-flex;
+      align-items: center;
+      border: 1px solid var(--rule);
+      border-radius: 999px;
+      padding: 3px;
+      background: rgba(255,255,255,0.6);
+    }
+    .lang-btn {
+      padding: 6px 12px;
+      border-radius: 999px;
+      font-size: 12px;
+      font-weight: 700;
+      letter-spacing: 0.08em;
+      color: var(--muted);
+      transition: all .2s;
+    }
+    .lang-btn:hover { color: var(--fg); }
+    .lang-btn[aria-pressed="true"] {
+      background: var(--fg);
+      color: var(--bg);
+    }
+
+    .topbar-right { display: flex; align-items: center; gap: 10px; }
+    .topbar-cta {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      font-weight: 600;
+      font-size: 14px;
+      padding: 10px 16px;
+      border-radius: 999px;
+      background: var(--fg);
+      color: var(--bg);
+      transition: transform .15s ease, background .2s;
+    }
+    .topbar-cta:hover { background: #000; transform: translateY(-1px); }
+    .topbar-cta svg { width: 16px; height: 16px; }
+    .topbar-cta-text { display: inline; }
+
+    @media (min-width: 1000px) { .topbar nav { display: flex; } }
+    @media (max-width: 540px) {
+      .brand-logo-full { display: none; }
+      .brand-logo-mark { display: block; height: 48px; }
+      .topbar-cta-text { display: none; }
+      .topbar-cta { padding: 10px; }
+    }
+
+    /* ---------- Hero ---------- */
+    .hero {
+      padding-top: clamp(40px, 6vw, 80px);
+      padding-bottom: clamp(40px, 6vw, 80px);
+    }
+    .hero-grid {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 32px;
+      align-items: end;
+    }
+    .hero-eyebrow-row {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      margin-bottom: 20px;
+    }
+    .hero-eyebrow-row .dot {
+      width: 8px; height: 8px; border-radius: 50%;
+      background: #2BB573;
+      box-shadow: 0 0 0 4px rgba(43, 181, 115, 0.18);
+    }
+    .hero-eyebrow-row.is-closed .dot { background: var(--muted); box-shadow: none; }
+
+    .experience-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      padding: 6px 16px 6px 6px;
+      background: var(--fg);
+      color: var(--bg);
+      border-radius: 999px;
+      font-size: 13px;
+      font-weight: 600;
+      margin-bottom: 28px;
+    }
+    .experience-badge .num {
+      display: inline-grid;
+      place-items: center;
+      width: 28px; height: 28px;
+      border-radius: 50%;
+      background: var(--accent);
+      color: var(--fg);
+      font-family: var(--font-display);
+      font-weight: 900;
+      font-size: 13px;
+    }
+
+    .hero-sub {
+      max-width: 46ch;
+      margin: 28px 0 36px;
+      color: var(--muted);
+      font-size: clamp(16px, 1.6vw, 19px);
+      line-height: 1.55;
+    }
+    .hero-cta-row { display: flex; flex-wrap: wrap; gap: 12px; }
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      padding: 16px 24px;
+      border-radius: 999px;
+      font-weight: 600;
+      font-size: 15px;
+      transition: transform .15s ease, background .2s, border-color .2s;
+      min-height: 52px;
+    }
+    .btn-primary { background: var(--fg); color: var(--bg); }
+    .btn-primary:hover { background: #000; transform: translateY(-1px); }
+    .btn-ghost {
+      background: transparent;
+      border: 1px solid var(--fg);
+      color: var(--fg);
+    }
+    .btn-ghost:hover { background: var(--fg); color: var(--bg); }
+    .btn svg { width: 18px; height: 18px; }
+
+    .hero-image {
+      position: relative;
+      aspect-ratio: 4 / 5;
+      overflow: hidden;
+      border-radius: 4px;
+    }
+    .hero-image img { width: 100%; height: 100%; object-fit: cover; object-position: center; }
+    .hero-image::after {
+      content: "";
+      position: absolute; inset: 0;
+      background: linear-gradient(180deg, transparent 60%, rgba(0,0,0,0.18) 100%);
+      pointer-events: none;
+    }
+    .hero-image-tag {
+      position: absolute;
+      bottom: 16px; left: 16px;
+      background: rgba(255,255,255,0.92);
+      backdrop-filter: blur(6px);
+      padding: 8px 14px;
+      border-radius: 999px;
+      font-size: 12px;
+      font-weight: 600;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+    }
+
+    @media (min-width: 880px) {
+      .hero-grid { grid-template-columns: 1.15fr 1fr; gap: 56px; }
+    }
+
+    .rule { border: 0; border-top: 1px solid var(--rule); margin: 0; }
+
+    /* ---------- Manifesto / Punch lines ---------- */
+    .manifesto {
+      padding-block: clamp(56px, 9vw, 112px);
+      border-top: 1px solid var(--rule);
+      border-bottom: 1px solid var(--rule);
+    }
+    .manifesto-eyebrow {
+      display: block;
+      margin-bottom: clamp(32px, 5vw, 56px);
+    }
+    .manifesto-grid {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 40px;
+    }
+    .manifesto-item h3 {
+      font-family: var(--font-display);
+      font-weight: 900;
+      font-size: clamp(48px, 7vw, 88px);
+      letter-spacing: -0.01em;
+      line-height: 0.95;
+      text-transform: uppercase;
+      margin: 0 0 14px;
+    }
+    .manifesto-item h3 .punch-dot {
+      color: var(--accent);
+      font-weight: 900;
+    }
+    .manifesto-item p {
+      margin: 0;
+      color: var(--muted);
+      max-width: 28ch;
+      font-size: clamp(15px, 1.3vw, 17px);
+      line-height: 1.5;
+    }
+    @media (min-width: 880px) {
+      .manifesto-grid { grid-template-columns: repeat(3, 1fr); gap: 48px; }
+    }
+
+    /* ---------- Services ---------- */
+    .services-head {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 24px;
+      align-items: end;
+      margin-bottom: 48px;
+    }
+    .services-head p { max-width: 50ch; color: var(--muted); margin: 0; }
+    @media (min-width: 880px) {
+      .services-head { grid-template-columns: 2fr 1fr; gap: 56px; }
+    }
+    .services-grid {
+      display: grid;
+      grid-template-columns: 1fr;
+      border-top: 1px solid var(--rule);
+    }
+    .service {
+      padding: 40px 0;
+      border-bottom: 1px solid var(--rule);
+      display: grid;
+      grid-template-columns: auto 1fr;
+      gap: 24px;
+      align-items: start;
+    }
+    .service-num {
+      font-family: var(--font-display);
+      font-weight: 700;
+      font-size: 18px;
+      color: var(--accent);
+      letter-spacing: 0.05em;
+      padding-top: 6px;
+    }
+    .service-title {
+      font-family: var(--font-display);
+      font-weight: 900;
+      font-size: clamp(28px, 4vw, 44px);
+      letter-spacing: -0.01em;
+      text-transform: uppercase;
+      line-height: 1;
+      margin: 0 0 12px;
+    }
+    .service p { margin: 0; max-width: 56ch; color: var(--muted); }
+    @media (min-width: 1000px) {
+      .services-grid { grid-template-columns: repeat(4, 1fr); }
+      .service {
+        padding: 40px 28px;
+        border-bottom: 0;
+        border-right: 1px solid var(--rule);
+      }
+      .service:first-child { padding-left: 0; }
+      .service:last-child { padding-right: 0; border-right: 0; }
+    }
+
+    /* ---------- About (dark) ---------- */
+    .about { background: var(--bg-dark); color: var(--fg-on-dark); }
+    .about-grid {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 40px;
+      align-items: stretch;
+    }
+    .about-photo {
+      aspect-ratio: 3 / 4;
+      overflow: hidden;
+      border-radius: 4px;
+      position: relative;
+    }
+    .about-photo img { width: 100%; height: 100%; object-fit: cover; }
+    .about-photo-tag {
+      position: absolute;
+      top: 16px; left: 16px;
+      background: var(--accent);
+      color: var(--fg);
+      padding: 6px 12px;
+      border-radius: 999px;
+      font-size: 11px;
+      font-weight: 700;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+    }
+    .about-text { display: flex; flex-direction: column; justify-content: center; }
+    .about-text p {
+      color: var(--muted-on-dark);
+      max-width: 48ch;
+      font-size: clamp(16px, 1.4vw, 18px);
+      line-height: 1.65;
+    }
+    .about-text p strong { color: var(--fg-on-dark); font-weight: 600; }
+    .about-quote {
+      margin: 32px 0 0;
+      padding: 24px;
+      border-left: 3px solid var(--accent);
+      font-family: var(--font-display);
+      font-weight: 700;
+      font-size: clamp(20px, 2.2vw, 26px);
+      line-height: 1.2;
+      text-transform: uppercase;
+      color: var(--fg-on-dark);
+    }
+    .about-stats {
+      margin-top: 40px;
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 20px;
+      border-top: 1px solid var(--rule-on-dark);
+      padding-top: 28px;
+    }
+    .stat-num {
+      font-family: var(--font-display);
+      font-weight: 900;
+      font-size: clamp(36px, 5vw, 56px);
+      line-height: 1;
+      color: var(--fg-on-dark);
+      letter-spacing: -0.01em;
+    }
+    .stat-num.accent-num { color: var(--accent); }
+    .stat-label {
+      font-size: 13px;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: var(--muted-on-dark);
+      margin-top: 8px;
+    }
+    @media (min-width: 880px) {
+      .about-grid { grid-template-columns: 1fr 1fr; gap: 64px; }
+      .about-photo { aspect-ratio: auto; min-height: 600px; }
+      .about-stats { grid-template-columns: repeat(4, 1fr); }
+    }
+
+    /* ---------- Visit ---------- */
+    .visit-head { margin-bottom: 48px; max-width: 60ch; }
+    .visit-head p { color: var(--muted); margin: 16px 0 0; font-size: 18px; }
+    .visit-grid { display: grid; grid-template-columns: 1fr; gap: 32px; }
+    .info-card {
+      background: var(--bg-elev);
+      border: 1px solid var(--rule);
+      border-radius: 4px;
+      padding: 32px;
+    }
+    .info-title {
+      font-family: var(--font-display);
+      font-weight: 900;
+      font-size: 24px;
+      text-transform: uppercase;
+      letter-spacing: 0.02em;
+      margin: 0 0 24px;
+    }
+    .hours-list { list-style: none; padding: 0; margin: 0; }
+    .hours-list li {
+      display: flex;
+      justify-content: space-between;
+      padding: 14px 0;
+      border-top: 1px solid var(--rule);
+      font-weight: 500;
+    }
+    .hours-list li:first-child { border-top: 0; padding-top: 0; }
+    .hours-list .closed { color: var(--muted); }
+    .hours-list .today {
+      background: rgba(79, 168, 189, 0.08);
+      margin: 0 -12px;
+      padding-left: 12px;
+      padding-right: 12px;
+      border-radius: 4px;
+      border-top-color: transparent;
+    }
+    .hours-list .today + li { border-top-color: transparent; }
+    .today-label {
+      display: inline-block;
+      margin-left: 8px;
+      font-size: 11px;
+      font-weight: 700;
+      letter-spacing: 0.1em;
+      color: var(--accent);
+      text-transform: uppercase;
+    }
+    .contact-list { list-style: none; padding: 0; margin: 0; }
+    .contact-list li {
+      padding: 16px 0;
+      border-top: 1px solid var(--rule);
+      display: flex;
+      align-items: flex-start;
+      gap: 14px;
+    }
+    .contact-list li:first-child { border-top: 0; padding-top: 0; }
+    .contact-list svg { width: 20px; height: 20px; flex-shrink: 0; margin-top: 2px; color: var(--accent); }
+    .contact-list .label {
+      font-size: 11px;
+      letter-spacing: 0.12em;
+      color: var(--muted);
+      text-transform: uppercase;
+      display: block;
+      margin-bottom: 2px;
+    }
+    .contact-list .value { font-weight: 600; font-size: 17px; }
+    .contact-list a.value:hover { color: var(--accent); }
+
+    .map-card {
+      grid-column: 1 / -1;
+      border: 1px solid var(--rule);
+      border-radius: 4px;
+      overflow: hidden;
+      aspect-ratio: 16 / 10;
+      background: #ddd;
+    }
+    .map-card iframe { width: 100%; height: 100%; border: 0; display: block; }
+
+    @media (min-width: 880px) {
+      .visit-grid { grid-template-columns: 1fr 1fr; gap: 32px; }
+      .map-card { grid-column: 1 / -1; aspect-ratio: 21 / 9; }
+    }
+
+    /* ---------- Footer ---------- */
+    .footer {
+      padding: 48px 0 96px;
+      border-top: 1px solid var(--rule);
+      font-size: 14px;
+      color: var(--muted);
+    }
+    .footer-grid {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 16px;
+      align-items: center;
+    }
+    .footer-grid a:hover { color: var(--fg); }
+    .footer-brand { display: inline-flex; align-items: center; gap: 12px; flex-wrap: wrap; }
+    .footer-brand img { height: 36px; width: auto; }
+    @media (min-width: 700px) {
+      .footer-grid { grid-template-columns: auto auto; justify-content: space-between; }
+    }
+
+    /* ---------- Mobile sticky call bar ---------- */
+    .mobile-call {
+      position: fixed;
+      left: 12px; right: 12px;
+      bottom: calc(12px + env(safe-area-inset-bottom));
+      z-index: 60;
+      display: flex;
+      gap: 8px;
+    }
+    .mobile-call .btn {
+      flex: 1;
+      justify-content: center;
+      box-shadow: 0 12px 32px -8px rgba(0,0,0,0.35);
+      min-height: 56px;
+    }
+    .mobile-call .btn-primary { background: var(--accent); color: #fff; }
+    .mobile-call .btn-primary:hover { background: var(--accent-hover); }
+    .mobile-call .btn-ghost {
+      background: var(--bg-elev);
+      border-color: var(--rule);
+      flex: 0 0 auto;
+      width: 56px;
+      padding: 0;
+    }
+    @media (min-width: 880px) {
+      .mobile-call { display: none; }
+      body { padding-bottom: 0; }
+    }
+    @media (max-width: 879px) {
+      body { padding-bottom: 96px; }
+    }
+
+    /* ---------- Reveal ---------- */
+    @media (prefers-reduced-motion: no-preference) {
+      .reveal {
+        opacity: 0;
+        transform: translateY(16px);
+        animation: reveal .8s cubic-bezier(.2,.7,.2,1) forwards;
+      }
+      .reveal.d1 { animation-delay: .05s; }
+      .reveal.d2 { animation-delay: .15s; }
+      .reveal.d3 { animation-delay: .25s; }
+      .reveal.d4 { animation-delay: .35s; }
+      @keyframes reveal { to { opacity: 1; transform: none; } }
+    }
+
+    ::selection { background: var(--accent); color: #fff; }
+  </style>
+</head>
+<body>
+
+  <!-- ============ TOP BAR ============ -->
+  <header class="topbar">
+    <div class="container topbar-inner">
+      <a href="#" class="brand" aria-label="Jimmy's Auto">
+        <img src="images/logo.png" alt="Jimmy's Auto" class="brand-logo brand-logo-full" />
+        <img src="images/logo-mark.png" alt="Jimmy's Auto" class="brand-logo brand-logo-mark" />
+      </a>
+
+      <nav aria-label="Main navigation">
+        <a href="#ydelser"><span class="t-da">Ydelser</span><span class="t-en">Services</span></a>
+        <a href="#om"><span class="t-da">Om Jimmy</span><span class="t-en">About</span></a>
+        <a href="#besog"><span class="t-da">Åbningstider</span><span class="t-en">Hours</span></a>
+        <a href="#besog"><span class="t-da">Find vej</span><span class="t-en">Directions</span></a>
+      </nav>
+
+      <div class="topbar-right">
+        <div class="lang-switch" role="group" aria-label="Language / Sprog">
+          <button class="lang-btn" data-set-lang="da" aria-pressed="true">DA</button>
+          <button class="lang-btn" data-set-lang="en" aria-pressed="false">EN</button>
+        </div>
+
+        <a href="tel:+4528466959" class="topbar-cta">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+            <path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/>
+          </svg>
+          <span class="topbar-cta-text">28 46 69 59</span>
+        </a>
+      </div>
+    </div>
+  </header>
+
+  <!-- ============ HERO ============ -->
+  <section class="hero container">
+    <div class="hero-grid">
+      <div>
+        <div class="hero-eyebrow-row reveal d1" id="status-row">
+          <span class="dot" aria-hidden="true"></span>
+          <span class="eyebrow" id="status-text">
+            <span class="t-da">Autoværksted i Rødovre</span>
+            <span class="t-en">Auto repair in Rødovre</span>
+          </span>
+        </div>
+
+        <div class="experience-badge reveal d1">
+          <span class="num">35+</span>
+          <span>
+            <span class="t-da">års erfaring under motorhjelmen</span>
+            <span class="t-en">years under the hood</span>
+          </span>
+        </div>
+
+        <h1 class="display headline reveal d2">
+          <span class="t-da">Bilen i<br/>gode <span class="accent">hænder.</span></span>
+          <span class="t-en">Your car.<br/>In good <span class="accent">hands.</span></span>
+        </h1>
+
+        <p class="hero-sub reveal d3">
+          <span class="t-da">Hos Jimmy's Auto får du ærligt arbejde og en fair pris. Reparation, dæk, diagnostik og aircondition — alt under samme tag, lavet af én mand med 35+ års erfaring i værkstedet.</span>
+          <span class="t-en">At Jimmy's Auto you get honest work at a fair price. Repairs, tires, diagnostics, and air conditioning — all under one roof, by one man with 35+ years on the shop floor.</span>
+        </p>
+
+        <div class="hero-cta-row reveal d4">
+          <a class="btn btn-primary" href="tel:+4528466959">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+              <path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/>
+            </svg>
+            <span class="t-da">Ring 28 46 69 59</span>
+            <span class="t-en">Call 28 46 69 59</span>
+          </a>
+          <a class="btn btn-ghost" href="#besog">
+            <span class="t-da">Find vej</span>
+            <span class="t-en">Get directions</span>
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+              <line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/>
+            </svg>
+          </a>
+        </div>
+      </div>
+
+      <div class="hero-image reveal d3">
+        <img src="images/jimmy-shop.jpg" alt="Jimmy in front of Jimmy's Auto at Nyholms Allé 21, Rødovre" />
+        <span class="hero-image-tag">Nyholms Allé 21, port 5 · Rødovre</span>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ MANIFESTO ============ -->
+  <section class="manifesto container">
+    <span class="eyebrow manifesto-eyebrow">
+      <span class="t-da">Vores løfter</span>
+      <span class="t-en">Our promises</span>
+    </span>
+    <div class="manifesto-grid">
+      <div class="manifesto-item">
+        <h3>
+          <span class="t-da">Ærligt<span class="punch-dot">.</span></span>
+          <span class="t-en">Honest<span class="punch-dot">.</span></span>
+        </h3>
+        <p>
+          <span class="t-da">Fast pris før vi går i gang. Ingen overraskelser på regningen.</span>
+          <span class="t-en">A clear quote before we start. No surprises on the bill.</span>
+        </p>
+      </div>
+      <div class="manifesto-item">
+        <h3>
+          <span class="t-da">Personligt<span class="punch-dot">.</span></span>
+          <span class="t-en">Personal<span class="punch-dot">.</span></span>
+        </h3>
+        <p>
+          <span class="t-da">Du afleverer hos Jimmy. Han laver bilen. Du henter den.</span>
+          <span class="t-en">You drop the car off with Jimmy. He fixes it. You pick it up.</span>
+        </p>
+      </div>
+      <div class="manifesto-item">
+        <h3>
+          <span class="t-da">Erfarent<span class="punch-dot">.</span></span>
+          <span class="t-en">Experienced<span class="punch-dot">.</span></span>
+        </h3>
+        <p>
+          <span class="t-da">35+ års erfaring under motorhjelmen. Jimmy har set det meste.</span>
+          <span class="t-en">35+ years under the hood. Jimmy has seen most of it.</span>
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ SERVICES ============ -->
+  <section id="ydelser" class="container">
+    <div class="services-head">
+      <h2 class="section-title">
+        <span class="t-da">Hvad vi <span class="accent">laver</span></span>
+        <span class="t-en">What we <span class="accent">do</span></span>
+      </h2>
+      <p>
+        <span class="t-da">Almindelig service, dækskift og avanceret fejlsøgning. Alle bilmærker — alt sammen lavet af Jimmy selv.</span>
+        <span class="t-en">Routine service, tire changes, and advanced diagnostics. All makes — all done by Jimmy himself.</span>
+      </p>
+    </div>
+
+    <div class="services-grid">
+      <article class="service">
+        <div class="service-num">01</div>
+        <div>
+          <h3 class="service-title">
+            <span class="t-da">Reparation</span>
+            <span class="t-en">Repairs</span>
+          </h3>
+          <p>
+            <span class="t-da">Service og reparation af alle bilmærker. Fra olieskift og bremser til motor- og koblingsarbejde. Du får tilbud på prisen før vi går i gang.</span>
+            <span class="t-en">Service and repairs for all makes. From oil changes and brakes to engine and clutch work. You get a quote before we start.</span>
+          </p>
+        </div>
+      </article>
+
+      <article class="service">
+        <div class="service-num">02</div>
+        <div>
+          <h3 class="service-title">
+            <span class="t-da">Dæk</span>
+            <span class="t-en">Tires</span>
+          </h3>
+          <p>
+            <span class="t-da">Dækskift, afbalancering og dækservice for personbiler og varevogne. Kør forbi når sæsonen skifter — eller ring og book en tid.</span>
+            <span class="t-en">Tire changes, balancing, and tire service for cars and vans. Drop by when the season changes — or call to book a slot.</span>
+          </p>
+        </div>
+      </article>
+
+      <article class="service">
+        <div class="service-num">03</div>
+        <div>
+          <h3 class="service-title">
+            <span class="t-da">Diagnostik</span>
+            <span class="t-en">Diagnostics</span>
+          </h3>
+          <p>
+            <span class="t-da">Computerdiagnostik der finder fejlen hurtigt og præcist. Lyser motorlampen? Vi læser fejlkoderne og forklarer hvad det betyder.</span>
+            <span class="t-en">Computer diagnostics that find the fault quickly and precisely. Check engine light on? We read the codes and explain what they mean.</span>
+          </p>
+        </div>
+      </article>
+
+      <article class="service">
+        <div class="service-num">04</div>
+        <div>
+          <h3 class="service-title">
+            <span class="t-da">Aircondition</span>
+            <span class="t-en">Air conditioning</span>
+          </h3>
+          <p>
+            <span class="t-da">Klimaservice, opfyldning og fejlsøgning på bilens aircondition. Køler det ikke som det skal? Vi finder ud af hvorfor.</span>
+            <span class="t-en">AC service, refilling, and fault-finding on your car's air conditioning. Not cooling like it should? We figure out why.</span>
+          </p>
+        </div>
+      </article>
+    </div>
+  </section>
+
+  <!-- ============ ABOUT (DARK) ============ -->
+  <section id="om" class="about">
+    <div class="container about-grid">
+      <div class="about-photo">
+        <img src="images/jimmy-workshop.jpg" alt="Jimmy in the workshop next to the lift" />
+        <span class="about-photo-tag">
+          <span class="t-da">Værkstedet</span>
+          <span class="t-en">The workshop</span>
+        </span>
+      </div>
+      <div class="about-text">
+        <span class="eyebrow on-dark">
+          <span class="t-da">Om Jimmy</span>
+          <span class="t-en">About Jimmy</span>
+        </span>
+        <h2 class="section-title" style="margin-top: 16px;">
+          <span class="t-da">Én mand.<br/>Ét <span class="accent">værksted.</span></span>
+          <span class="t-en">One man.<br/>One <span class="accent">workshop.</span></span>
+        </h2>
+        <div style="margin-top: 28px;">
+          <p>
+            <span class="t-da"><strong>Jimmy har stået ved bilerne i mere end 35 år.</strong> Det er erfaring du kan høre, når han forklarer hvad der er galt — og det er erfaring du kan se, når bilen kører ud igen.</span>
+            <span class="t-en"><strong>Jimmy has been working on cars for more than 35 years.</strong> It's experience you can hear when he explains what's wrong — and experience you can see when the car drives out again.</span>
+          </p>
+          <p>
+            <span class="t-da">Værkstedet på Nyholms Allé er hans alene. Du afleverer din bil hos ham, han laver den, og du henter den igen. Ingen mellemmænd, ingen overraskende regninger.</span>
+            <span class="t-en">The workshop on Nyholms Allé is his alone. You drop your car off with him, he fixes it, you pick it up. No middlemen, no surprise bills.</span>
+          </p>
+          <p>
+            <span class="t-da">Alle bilmærker, gamle som nye. Værkstedet er fuldt udstyret til alt fra hverdagsservice til mere komplekse reparationer — og efter mere end 35 år i faget har Jimmy set det meste.</span>
+            <span class="t-en">All makes, old and new. The workshop is fully equipped for everything from routine service to more complex repairs — and after 35+ years in the trade, Jimmy has seen most of it.</span>
+          </p>
+        </div>
+
+        <blockquote class="about-quote">
+          <span class="t-da">"Jeg laver din bil som var det min egen."</span>
+          <span class="t-en">"I work on your car like it was my own."</span>
+        </blockquote>
+
+        <div class="about-stats" aria-label="Quick facts">
+          <div>
+            <div class="stat-num accent-num">35+</div>
+            <div class="stat-label">
+              <span class="t-da">Års erfaring</span>
+              <span class="t-en">Years experience</span>
+            </div>
+          </div>
+          <div>
+            <div class="stat-num">1:1</div>
+            <div class="stat-label">
+              <span class="t-da">Personlig service</span>
+              <span class="t-en">Personal service</span>
+            </div>
+          </div>
+          <div>
+            <div class="stat-num">★</div>
+            <div class="stat-label">
+              <span class="t-da">Alle bilmærker</span>
+              <span class="t-en">All car brands</span>
+            </div>
+          </div>
+          <div>
+            <div class="stat-num">DK</div>
+            <div class="stat-label">
+              <span class="t-da">Lokalt i Rødovre</span>
+              <span class="t-en">Local in Rødovre</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ VISIT ============ -->
+  <section id="besog" class="container">
+    <div class="visit-head">
+      <span class="eyebrow">
+        <span class="t-da">Besøg værkstedet</span>
+        <span class="t-en">Visit the workshop</span>
+      </span>
+      <h2 class="section-title" style="margin-top: 12px;">
+        <span class="t-da">Kom forbi<br/>eller <span class="accent">ring først.</span></span>
+        <span class="t-en">Drop in<br/>or <span class="accent">call ahead.</span></span>
+      </h2>
+      <p>
+        <span class="t-da">Du finder os på Nyholms Allé 21 (port 5) — kig efter den lyseblå bil i tandhjulet.</span>
+        <span class="t-en">Find us at Nyholms Allé 21 (gate 5) — look for the light-blue car in the gear.</span>
+      </p>
+    </div>
+
+    <div class="visit-grid">
+      <div class="info-card">
+        <h3 class="info-title">
+          <span class="t-da">Åbningstider</span>
+          <span class="t-en">Opening hours</span>
+        </h3>
+        <ul class="hours-list" id="hours-list">
+          <li data-day="1">
+            <span class="day-name"><span class="t-da">Mandag</span><span class="t-en">Monday</span></span>
+            <span>9 – 17</span>
+          </li>
+          <li data-day="2">
+            <span class="day-name"><span class="t-da">Tirsdag</span><span class="t-en">Tuesday</span></span>
+            <span>9 – 17</span>
+          </li>
+          <li data-day="3">
+            <span class="day-name"><span class="t-da">Onsdag</span><span class="t-en">Wednesday</span></span>
+            <span>9 – 17</span>
+          </li>
+          <li data-day="4">
+            <span class="day-name"><span class="t-da">Torsdag</span><span class="t-en">Thursday</span></span>
+            <span>9 – 17</span>
+          </li>
+          <li data-day="5">
+            <span class="day-name"><span class="t-da">Fredag</span><span class="t-en">Friday</span></span>
+            <span>9 – 17</span>
+          </li>
+          <li data-day="6">
+            <span class="day-name"><span class="t-da">Lørdag</span><span class="t-en">Saturday</span></span>
+            <span>9 – 17</span>
+          </li>
+          <li data-day="0">
+            <span class="day-name"><span class="t-da">Søndag</span><span class="t-en">Sunday</span></span>
+            <span class="closed"><span class="t-da">Lukket</span><span class="t-en">Closed</span></span>
+          </li>
+        </ul>
+      </div>
+
+      <div class="info-card">
+        <h3 class="info-title">
+          <span class="t-da">Kontakt</span>
+          <span class="t-en">Contact</span>
+        </h3>
+        <ul class="contact-list">
+          <li>
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
+            <div>
+              <span class="label"><span class="t-da">Telefon</span><span class="t-en">Phone</span></span>
+              <a class="value" href="tel:+4528466959">28 46 69 59</a>
+            </div>
+          </li>
+          <li>
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
+            <div>
+              <span class="label"><span class="t-da">E-mail</span><span class="t-en">Email</span></span>
+              <a class="value" href="mailto:jimmyxdk@outlook.de">jimmyxdk@outlook.de</a>
+            </div>
+          </li>
+          <li>
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
+            <div>
+              <span class="label"><span class="t-da">Adresse</span><span class="t-en">Address</span></span>
+              <a class="value" href="https://www.google.com/maps/search/?api=1&query=Nyholms+All%C3%A9+21%2C+2610+R%C3%B8dovre" target="_blank" rel="noopener">
+                Nyholms Allé 21 (port 5)<br/>2610 Rødovre
+              </a>
+            </div>
+          </li>
+        </ul>
+      </div>
+
+      <div class="map-card">
+        <iframe
+          loading="lazy"
+          referrerpolicy="no-referrer-when-downgrade"
+          src="https://www.google.com/maps?q=Nyholms+All%C3%A9+21%2C+2610+R%C3%B8dovre%2C+Denmark&output=embed"
+          title="Map of Jimmy's Auto"
+          allowfullscreen></iframe>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ FOOTER ============ -->
+  <footer class="footer container">
+    <div class="footer-grid">
+      <div class="footer-brand">
+        <img src="images/logo.png" alt="Jimmy's Auto" />
+        <span>Nyholms Allé 21, 2610 Rødovre · <a href="tel:+4528466959">28 46 69 59</a></span>
+      </div>
+      <div>© <span id="year">2026</span> Jimmy's Auto</div>
+    </div>
+  </footer>
+
+  <!-- ============ MOBILE STICKY CALL BAR ============ -->
+  <div class="mobile-call" role="region" aria-label="Quick contact">
+    <a class="btn btn-primary" href="tel:+4528466959">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+        <path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/>
+      </svg>
+      <span class="t-da">Ring 28 46 69 59</span>
+      <span class="t-en">Call 28 46 69 59</span>
+    </a>
+    <a class="btn btn-ghost" href="https://www.google.com/maps/search/?api=1&query=Nyholms+All%C3%A9+21%2C+2610+R%C3%B8dovre" target="_blank" rel="noopener" aria-label="Get directions">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+        <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/>
+      </svg>
+    </a>
+  </div>
+
+  <script>
+    // ===== Year =====
+    document.getElementById('year').textContent = new Date().getFullYear();
+
+    // ===== Language switcher =====
+    const PAGE_META = {
+      da: {
+        title: "Jimmy's Auto — Autoværksted i Rødovre",
+        desc:  "Lokalt autoværksted i Rødovre med mere end 35 års erfaring. Reparation, dæk og diagnostik. Ring til Jimmy på 28 46 69 59."
+      },
+      en: {
+        title: "Jimmy's Auto — Auto repair in Rødovre, Denmark",
+        desc:  "Local auto repair shop in Rødovre with 35+ years of experience. Repairs, tires, and diagnostics. Call Jimmy at +45 28 46 69 59."
+      }
+    };
+
+    function setLang(lang) {
+      if (lang !== 'da' && lang !== 'en') lang = 'da';
+      document.documentElement.setAttribute('lang', lang);
+      document.documentElement.setAttribute('data-lang', lang);
+      document.title = PAGE_META[lang].title;
+      const meta = document.getElementById('meta-desc');
+      if (meta) meta.setAttribute('content', PAGE_META[lang].desc);
+
+      document.querySelectorAll('[data-set-lang]').forEach(btn => {
+        const isActive = btn.getAttribute('data-set-lang') === lang;
+        btn.setAttribute('aria-pressed', isActive ? 'true' : 'false');
+      });
+      try { localStorage.setItem('jimmys-lang', lang); } catch (e) {}
+    }
+
+    // Detect initial language
+    (function initLang() {
+      let lang;
+      try { lang = localStorage.getItem('jimmys-lang'); } catch (e) {}
+      if (!lang) {
+        const nav = (navigator.language || 'da').toLowerCase();
+        lang = nav.startsWith('da') ? 'da' : 'en';
+      }
+      setLang(lang);
+    })();
+
+    document.querySelectorAll('[data-set-lang]').forEach(btn => {
+      btn.addEventListener('click', () => setLang(btn.getAttribute('data-set-lang')));
+    });
+
+    // ===== Open/closed status (Mon–Sat 08–17) =====
+    (function() {
+      const now = new Date();
+      const day = now.getDay();
+      const hour = now.getHours();
+      const isOpen = day >= 1 && day <= 6 && hour >= 9 && hour < 17;
+
+      const row = document.getElementById('status-row');
+      const text = document.getElementById('status-text');
+      const daText = text.querySelector('.t-da');
+      const enText = text.querySelector('.t-en');
+
+      if (isOpen) {
+        daText.textContent = 'Åbent nu · Autoværksted i Rødovre';
+        enText.textContent = 'Open now · Auto repair in Rødovre';
+      } else {
+        daText.textContent = 'Lukket nu · Autoværksted i Rødovre';
+        enText.textContent = 'Closed now · Auto repair in Rødovre';
+        row.classList.add('is-closed');
+      }
+
+      const todayLi = document.querySelector(`#hours-list li[data-day="${day}"]`);
+      if (todayLi) {
+        todayLi.classList.add('today');
+        const dayName = todayLi.querySelector('.day-name');
+        if (dayName) {
+          const tagDa = document.createElement('span');
+          tagDa.className = 'today-label t-da';
+          tagDa.textContent = 'I dag';
+          const tagEn = document.createElement('span');
+          tagEn.className = 'today-label t-en';
+          tagEn.textContent = 'Today';
+          dayName.appendChild(tagDa);
+          dayName.appendChild(tagEn);
+        }
+      }
+    })();
+  </script>
+
+</body>
+</html>
